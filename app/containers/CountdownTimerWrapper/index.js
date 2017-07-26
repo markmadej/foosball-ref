@@ -11,18 +11,23 @@ export default class CountdownTimerWrapper extends React.PureComponent { // esli
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      timerRunning: false,
+      remainingSeconds: 0
+    };
 
     // This binding is necessary to make `this` work in the callback - magic from React docs
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    if (this.state.timerRunning === true) {
-      console.log("Timer already running, exiting handleClick");
-      return;
-    }
-
+    this.stopTimer();
+    this.setState(previousState => {
+      return {
+        timerRunning: true,
+        remainingSeconds: Number(this.props.defaultSeconds).toFixed(2)
+      }
+    });
     this.timerID = setInterval(
       () => this.decrementTimer(),
       100 //run every 1/10 second
@@ -30,13 +35,36 @@ export default class CountdownTimerWrapper extends React.PureComponent { // esli
   }
 
   decrementTimer() {
+    let timeLeft = Number(this.state.remainingSeconds).toFixed(2) - Number(0.1).toFixed(2);
+    this.setState(previousState => {
+      return {
+        remainingSeconds: timeLeft,
+        timerRunning: timeLeft > 0 ? true : false
+      };
+    });
+
+    if (timeLeft <= 0) {
+      console.log("Reached end of timer!  Buzzzzzz");
+      this.stopTimer();
+
+    }
+  }
+
+  stopTimer() {
+    if (this.timerID && this.timerID != 0) {
+      console.log("Ending timer interval.");
+      clearInterval(this.timerID);
+      this.timerID = 0;
+    } else {
+      console.log("In stopTimer but timer was not running.  Shrug, exiting.");
+    }
 
   }
 
   render() {
     return (
-      <CountdownTimer defaultSeconds={this.props.defaultSeconds}
-        currTimerSeconds={this.props.currTimerSeconds} onClick={this.handleClick} />
+      <CountdownTimer timerRunning={this.state.timerRunning} defaultSeconds={this.props.defaultSeconds}
+        currTimerSeconds={this.state.remainingSeconds} onClick={this.handleClick} />
     );
   }
 }

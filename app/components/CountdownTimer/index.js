@@ -15,7 +15,7 @@ export default class CountdownTimer extends React.PureComponent { // eslint-disa
   render() {
     return (
       <div onClick={this.props.onClick}>
-        {this.props.currTimerSeconds ? this.props.currTimerSeconds : this.props.defaultSeconds}
+        {this.props.timerRunning ? Number(this.props.currTimerSeconds).toFixed(1) : this.props.defaultSeconds}
       </div>
     );
   }

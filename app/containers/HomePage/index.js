@@ -16,6 +16,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import messages from './messages';
 import TimeOutBox from '../../components/TimeOutBox';
+import GameCounter from '../../components/GameCounter';
 import CountdownTimerWrapper from '../../containers/CountdownTimerWrapper';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -25,7 +26,9 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       <h1>
         <FormattedMessage {...messages.header} />
         <CountdownTimerWrapper defaultSeconds="15" />
-        <TimeOutBox />
+        <CountdownTimerWrapper defaultSeconds="10" />
+        <GameCounter maxGames="2" />
+        <GameCounter maxGames="2" />
       </h1>
       </MuiThemeProvider>
     );

@@ -24,15 +24,7 @@ describe('<CountdownTimerWrapper />', () => {
     expect(renderedComponent.text()).toBe('15');
   });
 
-  it('should render the current seconds over default', () => {
-    const renderedComponent = render(
-      <CountdownTimerWrapper defaultSeconds='15' currTimerSeconds='8.9' />
-    );
-    expect(renderedComponent.text()).toBe('8.9');
-  });
-
   it('should start to run a timer when clicked', () => {
-
     var clock = sinon.useFakeTimers();
     const renderedComponent = mount(
       <CountdownTimerWrapper defaultSeconds='15' />
@@ -41,7 +33,19 @@ describe('<CountdownTimerWrapper />', () => {
     renderedComponent.simulate('click');
     clock.tick(1001);
     expect(renderedComponent.text()).toBe('14.0');
+    clock.restore();
+  });
 
+  it('should restart the timer if clicked while the timer is running', () => {
+    var clock = sinon.useFakeTimers();
+    const renderedComponent = mount(
+      <CountdownTimerWrapper defaultSeconds='15' />
+    );
+    renderedComponent.simulate('click');
+    clock.tick(1001);
+    renderedComponent.simulate('click');
+    clock.tick(1001);
+    expect(renderedComponent.text()).toBe('14.0');
     clock.restore();
   });
 
