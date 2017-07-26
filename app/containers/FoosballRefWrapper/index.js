@@ -1,5 +1,5 @@
 /*
- * HomePage
+ * FoosballRefWrapper
  *
  * This is the first thing users see of our App, at the '/' route
  *
@@ -19,7 +19,7 @@ import TimeOutBox from '../../components/TimeOutBox';
 import GameCounter from '../../components/GameCounter';
 import CountdownTimerWrapper from '../../containers/CountdownTimerWrapper';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class FoosballRefWrapper extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>

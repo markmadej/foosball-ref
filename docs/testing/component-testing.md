@@ -42,11 +42,11 @@ _Note: This is a [state**less** ("dumb") component](../js/README.md#architecture
 It might be used in another component like this:
 
 ```javascript
-// HomePage.react.js
+// FoosballRefWrapper.react.js
 
 import Button from './Button.react';
 
-class HomePage extends React.Component {
+class FoosballRefWrapper extends React.Component {
   render() {
     return(
       <Button onClick={this.doSomething}>Click me!</Button>
