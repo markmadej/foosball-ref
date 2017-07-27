@@ -17,7 +17,7 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import messages from './messages';
 import TimeOutBox from '../../components/TimeOutBox';
 import GameCounter from '../../components/GameCounter';
-import CountdownTimerWrapper from '../../containers/CountdownTimerWrapper';
+import TimerGroupWrapper from '../../containers/TimerGroupWrapper';
 
 export default class FoosballRefWrapper extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -25,8 +25,7 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
       <h1>
         <FormattedMessage {...messages.header} />
-        <CountdownTimerWrapper defaultSeconds="15" />
-        <CountdownTimerWrapper defaultSeconds="10" />
+        <TimerGroupWrapper />
         <GameCounter maxGames="2" />
         <GameCounter maxGames="2" />
       </h1>
