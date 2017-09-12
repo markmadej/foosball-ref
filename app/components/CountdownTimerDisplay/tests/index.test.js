@@ -5,7 +5,7 @@
 * - Buttons that start a timer running in the display panel for various times.
 */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import CountdownTimerDisplay from '../index';
 
@@ -42,18 +42,18 @@ describe('<CountdownTimerDisplay />', () => {
   });
 
   it('should show the background color of the timer as white when we are above 2 seconds', () => {
-    const renderedComponent = shallow(
+    const renderedComponent = mount(
       <CountdownTimerDisplay running={true} currentTime="14.5" startTimer={ ()=>{} /* no-op for test */ } />
     );
     var displayPanel = renderedComponent.find('.displayPanel');
-    expect(displayPanel.text()).toBe("this test is failing for now");
+    expect(displayPanel.hasClass('timer-warning')).toBe(false);
   });
 
   it('should show the background color of the timer as red when we are at or below 2 seconds', () => {
-    const renderedComponent = shallow(
+    const renderedComponent = mount(
       <CountdownTimerDisplay running={true} currentTime="1.8" startTimer={ ()=>{} /* no-op for test */ } />
     );
     var displayPanel = renderedComponent.find('.displayPanel');
-    expect(displayPanel.text()).toBe("fail fail fail");
+    expect(displayPanel.hasClass('timer-warning')).toBe(true);
   });
 });
