@@ -11,13 +11,6 @@ import CountdownTimerDisplay from '../index';
 
 
 describe('<CountdownTimerDisplay />', () => {
-  it('should have a display panel that is blank by default', () => {
-    const renderedComponent = shallow(
-      <CountdownTimerDisplay running={false} startTimer={ ()=>{} /* no-op for test */ } />
-    );
-    var displayPanel = renderedComponent.find('.displayPanel');
-    expect(displayPanel.text()).toBe("");
-  });
 
   it('should have display 10 second and 15 second timer buttons if the game type is standard', () => {
     //"standard" game type should be the default also.
@@ -46,5 +39,21 @@ describe('<CountdownTimerDisplay />', () => {
     );
     var displayPanel = renderedComponent.find('.displayPanel');
     expect(displayPanel.text()).toBe("14.5");
+  });
+
+  it('should show the background color of the timer as white when we are above 2 seconds', () => {
+    const renderedComponent = shallow(
+      <CountdownTimerDisplay running={true} currentTime="14.5" startTimer={ ()=>{} /* no-op for test */ } />
+    );
+    var displayPanel = renderedComponent.find('.displayPanel');
+    expect(displayPanel.text()).toBe("this test is failing for now");
+  });
+
+  it('should show the background color of the timer as red when we are at or below 2 seconds', () => {
+    const renderedComponent = shallow(
+      <CountdownTimerDisplay running={true} currentTime="1.8" startTimer={ ()=>{} /* no-op for test */ } />
+    );
+    var displayPanel = renderedComponent.find('.displayPanel');
+    expect(displayPanel.text()).toBe("fail fail fail");
   });
 });

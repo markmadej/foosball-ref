@@ -13,7 +13,7 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
   render() {
     return (
       <div>
-      <div className="displayPanel">{this.props.running ? Number(this.props.currentTime).toFixed(1) : ""}</div>
+      <div className="displayPanel">{this.props.running ? Number(this.props.currentTime).toFixed(1) : "0.0"}</div>
       <div className="timerButton" data-test-ref="timer10" onClick={()=>this.props.startTimer(10)}>10</div>
       <div className="timerButton" data-test-ref="timer15" onClick={()=>this.props.startTimer(15)}>15</div>
       </div>

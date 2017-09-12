@@ -28,13 +28,11 @@ export default class GameCounter extends React.PureComponent { // eslint-disable
     // If the counter is less than or equal to maxGames, increment.
     // If the counter is already at max games, set back to zero.
     if (this.state.gameCount < this.props.maxGames) {
-      console.log("inside incrementCounter, adding 1 to current state:", this.state.gameCount);
       var newGameCt = this.state.gameCount + 1;
       this.setState({
         gameCount: newGameCt
       });
     } else {
-      console.log("inside incrementCounter, setting back to zero");
       this.setState({
         gameCount: 0
       });
@@ -42,7 +40,6 @@ export default class GameCounter extends React.PureComponent { // eslint-disable
   }
 
   render() {
-    console.log("Rendering, game count = ", this.state.gameCount);
     return (
       <div onClick={this.incrementCounter}>{this.state.gameCount}</div>
     );

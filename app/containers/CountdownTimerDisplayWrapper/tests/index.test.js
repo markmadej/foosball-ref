@@ -12,7 +12,6 @@ describe('<CountdownTimerDisplayWrapper />', () => {
     const renderedComponent = shallow(
       <CountdownTimerDisplayWrapper />
     );
-    console.log(renderedComponent.debug());
     expect(renderedComponent.find(CountdownTimerDisplay).length).toBe(1);
   });
 
