@@ -6,7 +6,9 @@ import sinon from 'sinon';
 import TimerGroupWrapper from '../index';
 import CountdownTimerWrapper from '../../../containers/CountdownTimerWrapper';
 
-describe('<TimerGroupWrapper />', () => {
+describe.skip('<TimerGroupWrapper />', () => {
+  // Skipping test now because I think I'll get rid of this and go
+  // with CountdownTimerDisplay and associated components.
   it('should render two CountdownTimerWrapper', () => {
     const renderedComponent = shallow(
       <TimerGroupWrapper />
@@ -15,6 +17,7 @@ describe('<TimerGroupWrapper />', () => {
   });
 
   it('should reset one timer if the other starts', () => {
+
     var clock = sinon.useFakeTimers();
     const renderedComponent = mount(
       <TimerGroupWrapper />

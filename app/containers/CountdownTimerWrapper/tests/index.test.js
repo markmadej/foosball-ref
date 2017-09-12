@@ -8,8 +8,9 @@ import ContentRemove from 'material-ui/svg-icons/content/remove';
 import CountdownTimerWrapper from '../index';
 import CountdownTimer from '../../../components/CountdownTimer';
 
-describe('<CountdownTimerWrapper />', () => {
-
+describe.skip('<CountdownTimerWrapper />', () => {
+  // Skipping test now because I think I'll get rid of this and go
+  // with CountdownTimerDisplay and associated components.
   it('should render a CountdownTimer', () => {
     const renderedComponent = shallow(
       <CountdownTimerWrapper defaultSeconds='15' />

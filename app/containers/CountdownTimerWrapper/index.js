@@ -21,6 +21,8 @@ export default class CountdownTimerWrapper extends React.PureComponent { // esli
   }
 
   handleClick() {
+    console.log("in countdowntimerwrapper handleClick , props=", this.props);
+    this.props.stopOtherTimers(this.props.defaultSeconds);
     this.stopTimer();
     this.setState(previousState => {
       return {
@@ -62,6 +64,7 @@ export default class CountdownTimerWrapper extends React.PureComponent { // esli
   }
 
   render() {
+    console.log("rendering countdowntimerwrapper. ", this.state, this.props);
     return (
       <CountdownTimer timerRunning={this.state.timerRunning} defaultSeconds={this.props.defaultSeconds}
         currTimerSeconds={this.state.remainingSeconds} onClick={this.handleClick} />
