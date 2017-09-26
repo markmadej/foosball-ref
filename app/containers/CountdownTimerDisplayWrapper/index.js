@@ -20,6 +20,7 @@ export default class CountdownTimerDisplayWrapper extends React.PureComponent { 
   }
 
   startTimer(seconds) {
+    console.log("in startTimer ", seconds);
     this.stopTimer();
     this.setState(previousState => {
       return {
@@ -43,8 +44,9 @@ export default class CountdownTimerDisplayWrapper extends React.PureComponent { 
     });
 
     if (timeLeft <= 0) {
-      // End of timer reached!  Notify the user 
-      window.navigator.vibrate(500);
+      // End of timer reached!  Notify the user
+      var success = window.navigator.vibrate(500);
+      console.log("vibrated? ", success);
       this.stopTimer();
 
     }

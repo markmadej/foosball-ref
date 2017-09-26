@@ -14,7 +14,7 @@ describe('<CountdownTimerDisplay />', () => {
 
   it('should have display 10 second and 15 second timer buttons if the game type is standard', () => {
     //"standard" game type should be the default also.
-    const renderedComponent = shallow(
+    const renderedComponent = mount(
       <CountdownTimerDisplay running={false} startTimer={ ()=>{} /* no-op for test */ } />
     );
     var timerButtons = renderedComponent.find('.timerButton');
@@ -23,9 +23,10 @@ describe('<CountdownTimerDisplay />', () => {
     var found15 = false;
     for (var i = 0; i <= 1; i++) {
       var button = timerButtons.at(i);
-      if (button.text() === "10") {
+      var buttonText = button.text();
+      if (buttonText === "10") {
         found10 = true;
-      } else if (button.text() === "15") {
+      } else if (buttonText === "15") {
         found15 = true;
       }
     }
@@ -34,26 +35,11 @@ describe('<CountdownTimerDisplay />', () => {
   });
 
   it('should show the seconds passed through the currentTime prop in the displayPanel', () => {
-    const renderedComponent = shallow(
-      <CountdownTimerDisplay running={true} currentTime="14.5" startTimer={ ()=>{} /* no-op for test */ } />
+    const renderedComponent = mount(
+      <CountdownTimerDisplay currentTime="14.5" startTimer={ ()=>{} /* no-op for test */ } />
     );
     var displayPanel = renderedComponent.find('.displayPanel');
     expect(displayPanel.text()).toBe("14.5");
   });
 
-  it('should show the background color of the timer as white when we are above 2 seconds', () => {
-    const renderedComponent = mount(
-      <CountdownTimerDisplay running={true} currentTime="14.5" startTimer={ ()=>{} /* no-op for test */ } />
-    );
-    var displayPanel = renderedComponent.find('.displayPanel');
-    expect(displayPanel.hasClass('timer-warning')).toBe(false);
-  });
-
-  it('should show the background color of the timer as red when we are at or below 2 seconds', () => {
-    const renderedComponent = mount(
-      <CountdownTimerDisplay running={true} currentTime="1.8" startTimer={ ()=>{} /* no-op for test */ } />
-    );
-    var displayPanel = renderedComponent.find('.displayPanel');
-    expect(displayPanel.hasClass('timer-warning')).toBe(true);
-  });
 });

@@ -16,17 +16,16 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import messages from './messages';
 import CountdownTimerDisplayWrapper from '../CountdownTimerDisplayWrapper';
-import GameCounter from '../../components/GameCounter';
+import Counter from '../../components/Counter';
 
 export default class FoosballRefWrapper extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
       <h1>
-        <FormattedMessage {...messages.header} />
         <CountdownTimerDisplayWrapper />
-        <GameCounter maxGames="2" />
-        <GameCounter maxGames="2" />
+        <Counter maxCount="2" />
+        <Counter maxCount="2" />
       </h1>
       </MuiThemeProvider>
     );
