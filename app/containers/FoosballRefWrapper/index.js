@@ -26,26 +26,30 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
       gridGap: '10 px',
       gridTemplateRows: '75% 25%',
       gridTemplateColumns: '50% 50%',
+      height: '100%',
     }
-    const topDiv = {
-        gridTemplateColumns: '1 / 3',
-        gridTemplateRows: '1 / 2',
-    };
+
+    const displayPanelStyle = {
+      gridRow: 1,
+      gridColumn: '1 / 3',
+    }
 
     const leftButton = {
-      gridTemplateColumns: '1 / 2',
-      gridTemplateRows: '2 / 3',
+      gridColumn: 1,
+      gridRow: 2,
+      textAlign: 'center',
     };
 
     const rightButton = {
-      gridTemplateColumns: '2 / 3',
-      gridTemplateRows: '2 / 3',
+      gridColumn: 2,
+      gridRow: 2,
+      textAlign: 'center',
     };
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
       <div style={containerStyle}>
-        <div style={topDiv}>
+        <div style={displayPanelStyle}>
           <CountdownTimerDisplayWrapper />
         </div>
         <div style={leftButton}><Counter maxCount={2} /></div>

@@ -15,24 +15,45 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
 
     const gridContainerStyle = {
       display: 'grid',
+      height: '100%',
       gridGap: '10 px',
+      gridTemplateRows: '50% 50%',
       gridTemplateColumns: '50% 50%',
     };
     const standard = {
       color: 'black',
       gridColumn: '1 / 3',
+      gridRow: 1,
       textAlign: 'center',
+      lineHeight: '200px',
+      fontSize: '3em',
     };
 
     const warning = {
       color: 'red',
       gridColumn: '1 / 3',
+      gridRow: 1,
       textAlign: 'center',
+      lineHeight: '200px',
+      fontSize: '3em',
     };
 
-    const buttonStyle = {
+    const leftButtonStyle = {
       borderStyle: 'solid',
       textAlign: 'center',
+      gridColumn: 1,
+      textAlign: 'center',
+      lineHeight: '200px',
+      fontSize: '3em',
+    };
+
+    const rightButtonStyle = {
+      borderStyle: 'solid',
+      textAlign: 'center',
+      gridColumn: 2,
+      textAlign: 'center',
+      lineHeight: '200px',
+      fontSize: '3em',
     };
 
     return (
@@ -40,8 +61,8 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       <div className='displayPanel' style={Number(this.props.currentTime) <= 2.0 ? warning : standard}>
       {Number(this.props.currentTime).toFixed(1)}
       </div>
-      <div style={buttonStyle} className="timerButton" data-test-ref="timer10" onClick={()=>this.props.startTimer(10)}>10</div>
-      <div style={buttonStyle} className="timerButton" data-test-ref="timer15" onClick={()=>this.props.startTimer(15)}>15</div>
+      <div style={leftButtonStyle} className="timerButton" data-test-ref="timer10" onClick={()=>this.props.startTimer(10)}>10</div>
+      <div style={rightButtonStyle} className="timerButton" data-test-ref="timer15" onClick={()=>this.props.startTimer(15)}>15</div>
       </div>
     );
   }

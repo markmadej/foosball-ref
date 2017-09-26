@@ -20,8 +20,12 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   };
 
   render() {
+    const containerStyle = {
+      width: '100vw',
+      height: '100vh',
+    }
     return (
-      <div>
+      <div style={containerStyle}>
         {React.Children.toArray(this.props.children)}
       </div>
     );
