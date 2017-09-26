@@ -10,14 +10,14 @@ import Counter from '../index';
 describe('<Counter />', () => {
   it('should display zero by default', () => {
     const renderedComponent = shallow(
-      <Counter maxGames='2'/>
+      <Counter maxCount={2}/>
     );
     expect(renderedComponent.text()).toBe('0');
   });
 
   it('Should increment the counter when clicked', () => {
     const renderedComponent = mount(
-      <Counter maxGames='2' />
+      <Counter maxCount={2} />
     );
     expect(renderedComponent.text()).toBe('0');
     renderedComponent.simulate('click');
@@ -28,7 +28,7 @@ describe('<Counter />', () => {
 
   it('should wrap around to zero after the max games are reached', () => {
     const renderedComponent = mount(
-      <Counter maxGames='1' />
+      <Counter maxCount={1} />
     );
     expect(renderedComponent.text()).toBe('0');
     renderedComponent.simulate('click');

@@ -18,30 +18,33 @@ export default class Counter extends React.PureComponent { // eslint-disable-lin
   constructor(props) {
     super(props);
     this.state = {
-      maxCount: 0
+      count: 0
     };
     this.incrementCounter = this.incrementCounter.bind(this);
   }
 
   incrementCounter() {
-
     // If the counter is less than or equal to maxGames, increment.
     // If the counter is already at max games, set back to zero.
-    if (this.state.maxCount < this.props.maxGames) {
-      var newGameCt = this.state.maxCount + 1;
+    if (this.state.count < this.props.maxCount) {
+      var newCount = this.state.count + 1;
       this.setState({
-        maxCount: newGameCt,
+        count: newCount,
       });
     } else {
       this.setState({
-        maxCount: 0,
+        count: 0,
       });
     }
   }
 
   render() {
     return (
-      <div onClick={this.incrementCounter}>{this.state.maxCount}</div>
+      <div onClick={ ()=>this.incrementCounter() }>{this.state.count}</div>
     );
   }
 }
+
+Counter.propTypes = {
+  maxCount: PropTypes.number.isRequired
+};
