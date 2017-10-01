@@ -20,7 +20,6 @@ export default class CountdownTimerDisplayWrapper extends React.PureComponent { 
   }
 
   startTimer(seconds) {
-    console.log("in startTimer ", seconds);
     this.stopTimer();
     this.setState(previousState => {
       return {

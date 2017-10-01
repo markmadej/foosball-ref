@@ -26,7 +26,7 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       gridRow: 1,
       textAlign: 'center',
       lineHeight: '200px',
-      fontSize: '3em',
+      fontSize: '4em',
     };
 
     const warning = {
@@ -35,7 +35,17 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       gridRow: 1,
       textAlign: 'center',
       lineHeight: '200px',
-      fontSize: '3em',
+      fontSize: '4em',
+    };
+
+    const timeOver = {
+      color: 'white',
+      backgroundColor: 'red',
+      gridColumn: '1 / 3',
+      gridRow: 1,
+      textAlign: 'center',
+      lineHeight: '200px',
+      fontSize: '4em',
     };
 
     const leftButtonStyle = {
@@ -56,9 +66,16 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       fontSize: '3em',
     };
 
+    var displayStyle = standard;
+    if (Number(this.props.currentTime) === 0) {
+      displayStyle = timeOver;
+    } else if (Number(this.props.currentTime) <= 2) {
+      displayStyle = warning;
+    }
+
     return (
       <div style={gridContainerStyle}>
-      <div className='displayPanel' style={Number(this.props.currentTime) <= 2.0 ? warning : standard}>
+      <div className='displayPanel' style={displayStyle}>
       {Number(this.props.currentTime).toFixed(1)}
       </div>
       <div style={leftButtonStyle} className="timerButton" data-test-ref="timer10" onClick={()=>this.props.startTimer(10)}>10</div>

@@ -24,7 +24,7 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
     const containerStyle = {
       display: 'grid',
       gridGap: '10 px',
-      gridTemplateRows: '75% 25%',
+      gridTemplateRows: '60% 20% 20%',
       gridTemplateColumns: '50% 50%',
       height: '100%',
     }
@@ -34,28 +34,52 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
       gridColumn: '1 / 3',
     }
 
-    const leftButton = {
+    const leftTOButton = {
       gridColumn: 1,
       gridRow: 2,
       textAlign: 'center',
     };
 
-    const rightButton = {
+    const rightTOButton = {
+      gridColumn: 2,
+      gridRow: 2,
+      textAlign: 'center',
+    };
+
+    const leftScoreButton = {
+      gridColumn: 1,
+      gridRow: 2,
+      textAlign: 'center',
+    };
+
+    const rightScoreButton = {
       gridColumn: 2,
       gridRow: 2,
       textAlign: 'center',
     };
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-      <div style={containerStyle}>
-        <div style={displayPanelStyle}>
-          <CountdownTimerDisplayWrapper />
-        </div>
-        <div style={leftButton}><Counter maxCount={2} /></div>
-        <div style={rightButton}><Counter maxCount={2} /></div>
-      </div>
-      </MuiThemeProvider>
+<MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+  <div style={containerStyle}>
+    <div style={displayPanelStyle}>
+      <CountdownTimerDisplayWrapper />
+    </div>
+    <div>Timeouts</div>
+    <div style={leftTOButton}>
+      <Counter maxCount={2} />
+    </div>
+    <div style={rightTOButton}>
+      <Counter maxCount={2} />
+  </div>
+  <div>Score</div>
+  <div style={leftScoreButton}>
+    <Counter maxCount={5} />
+  </div>
+  <div style={rightScoreButton}>
+    <Counter maxCount={5} />
+  </div>
+  </div>
+</MuiThemeProvider>
     );
   }
 }
