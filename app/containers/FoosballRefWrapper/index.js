@@ -48,12 +48,14 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
       gridColumn: '1 / 3',
       gridRow: '4 / 5',
       textAlign: 'center',
+      fontSize: '2em',
     };
 
     const rightTOButton = {
       gridColumn: '3 / 5',
       gridRow: '4 / 5',
       textAlign: 'center',
+      fontSize: '2em',
     };
 
     const leftScoreText = {
@@ -72,18 +74,26 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
       gridColumn: '1 / 2',
       gridRow: '6 / 7',
       textAlign: 'center',
+      fontSize: '2em',
     };
 
     const rightScoreButton = {
       gridColumn: '4 / 5',
       gridRow: '6 / 7',
       textAlign: 'center',
+      fontSize: '2em',
     };
 
+    const possessionTextStyle = {
+      gridColumn: '2 / 4',
+      gridRow: '5 / 6',
+      textAlign: 'center',
+    }
     const possessionArrowStyle = {
       gridColumn: '2 / 4',
       gridRow: '6 / 7',
       textAlign: 'center',
+      fontSize: '2em',  
     }
 
     return (
@@ -104,6 +114,7 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
     <div style={leftScoreButton}>
       <Counter maxCount={5} />
     </div>
+    <div style={possessionTextStyle}>Possession</div>
     <PossessionArrow style={possessionArrowStyle} teamInPossession={1}/>
     <div style={rightScoreButton}>
       <Counter maxCount={5} />

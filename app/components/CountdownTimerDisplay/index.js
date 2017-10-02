@@ -22,6 +22,7 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
     };
     const standard = {
       color: 'black',
+      backgroundColor: 'white',
       gridColumn: '1 / 3',
       gridRow: 1,
       textAlign: 'center',
@@ -30,7 +31,8 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
     };
 
     const warning = {
-      color: 'red',
+      color: 'black',
+      backgroundColor: 'yellow',
       gridColumn: '1 / 3',
       gridRow: 1,
       textAlign: 'center',
