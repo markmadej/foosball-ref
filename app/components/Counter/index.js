@@ -10,9 +10,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import ContentRemove from 'material-ui/svg-icons/content/remove';
 
 export default class Counter extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {

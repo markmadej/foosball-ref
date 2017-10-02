@@ -11,9 +11,6 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import messages from './messages';
 import CountdownTimerDisplayWrapper from '../CountdownTimerDisplayWrapper';
 import Counter from '../../components/Counter';
@@ -59,7 +56,6 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
     };
 
     return (
-<MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
   <div style={containerStyle}>
     <div style={displayPanelStyle}>
       <CountdownTimerDisplayWrapper />
@@ -79,7 +75,6 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
     <Counter maxCount={5} />
   </div>
   </div>
-</MuiThemeProvider>
     );
   }
 }
