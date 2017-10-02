@@ -1,8 +1,5 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import ContentRemove from 'material-ui/svg-icons/content/remove';
 import sinon from 'sinon';
 import Counter from '../index';
 

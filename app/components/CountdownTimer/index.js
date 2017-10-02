@@ -7,9 +7,6 @@
  */
 
 import React from 'react';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import ContentRemove from 'material-ui/svg-icons/content/remove';
 
 export default class CountdownTimer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {

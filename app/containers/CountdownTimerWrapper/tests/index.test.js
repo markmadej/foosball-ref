@@ -1,10 +1,6 @@
 import React from 'react';
 import { shallow, render, mount } from 'enzyme';
 import sinon from 'sinon';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import ContentRemove from 'material-ui/svg-icons/content/remove';
-
 import CountdownTimerWrapper from '../index';
 import CountdownTimer from '../../../components/CountdownTimer';
 
