@@ -18,4 +18,14 @@ describe('<PossessionArrow />', () => {
     expect(renderedComponent.text()).toBe('\u27a1');
   });
 
+  it('should flip the posession arrow upon clicking', () => {
+    const renderedComponent = mount(
+      <PossessionArrow teamInPossession={1}/>
+    );
+
+    expect(renderedComponent.text()).toBe('\u2b05');
+    renderedComponent.find("[data-test-ref='posession-arrow']").simulate('click');
+    expect(renderedComponent.text()).toBe('\u27a1');
+  });
+
 });
