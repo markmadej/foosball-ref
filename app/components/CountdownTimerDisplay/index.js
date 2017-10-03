@@ -26,7 +26,6 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       gridColumn: '1 / 3',
       gridRow: 1,
       textAlign: 'center',
-      lineHeight: '200px',
       fontSize: '4em',
     };
 
@@ -36,7 +35,6 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       gridColumn: '1 / 3',
       gridRow: 1,
       textAlign: 'center',
-      lineHeight: '200px',
       fontSize: '4em',
     };
 
@@ -46,7 +44,6 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       gridColumn: '1 / 3',
       gridRow: 1,
       textAlign: 'center',
-      lineHeight: '200px',
       fontSize: '4em',
     };
 
@@ -55,7 +52,6 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       textAlign: 'center',
       gridColumn: 1,
       textAlign: 'center',
-      lineHeight: '200px',
       fontSize: '3em',
     };
 
@@ -64,7 +60,6 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       textAlign: 'center',
       gridColumn: 2,
       textAlign: 'center',
-      lineHeight: '200px',
       fontSize: '3em',
     };
 
