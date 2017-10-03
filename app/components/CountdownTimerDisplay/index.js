@@ -29,6 +29,15 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       fontSize: '4em',
     };
 
+    const timeStart = {
+      color: 'white',
+      backgroundColor: 'green',
+      gridColumn: '1 / 3',
+      gridRow: 1,
+      textAlign: 'center',
+      fontSize: '4em',
+    };
+
     const warning = {
       color: 'black',
       backgroundColor: 'yellow',
@@ -68,6 +77,8 @@ export default class CountdownTimerDisplay extends React.PureComponent { // esli
       displayStyle = timeOver;
     } else if (Number(this.props.currentTime) <= 2) {
       displayStyle = warning;
+    } else if (Number(this.props.currentTime) > this.props.startTime - .5) {
+      displayStyle = timeStart;
     }
 
     return (

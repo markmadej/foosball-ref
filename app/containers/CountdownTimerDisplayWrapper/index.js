@@ -13,7 +13,8 @@ export default class CountdownTimerDisplayWrapper extends React.PureComponent { 
     super(props);
     this.state = {
       running: false,
-      displaySeconds: -1
+      displaySeconds: -1,
+      startSeconds: -1,
     };
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
@@ -24,7 +25,8 @@ export default class CountdownTimerDisplayWrapper extends React.PureComponent { 
     this.setState(previousState => {
       return {
         running: true,
-        displaySeconds: Number(seconds).toFixed(2)
+        displaySeconds: Number(seconds).toFixed(2),
+        startSeconds: Number(seconds),
       }
     });
     this.timerID = setInterval(
@@ -64,7 +66,11 @@ export default class CountdownTimerDisplayWrapper extends React.PureComponent { 
       currentTime = this.state.displaySeconds;
     }
     return (
-      <CountdownTimerDisplay currentTime={currentTime} running={this.state.running} startTimer={this.startTimer} />
+      <CountdownTimerDisplay
+        currentTime={currentTime}
+        running={this.state.running}
+        startTimer={this.startTimer}
+        startTime={this.state.startSeconds}/>
     );
   }
 }
