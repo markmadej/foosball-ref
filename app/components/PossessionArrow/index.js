@@ -20,7 +20,6 @@ export default class PossessionArrow extends React.PureComponent { // eslint-dis
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("in componentWRCP, ", nextProps);
     this.setState({
       teamInPossession: nextProps.teamInPossession,
     });

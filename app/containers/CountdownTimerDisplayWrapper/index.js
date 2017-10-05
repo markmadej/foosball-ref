@@ -24,9 +24,9 @@ export default class CountdownTimerDisplayWrapper extends React.PureComponent { 
 
   }
 
-  componentDidMount() {
-    if (this.props.startTime != null) {
-      this.startTimer(this.props.startTime);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.startTimeout != null && nextProps.startTimeout != this.props.startTimeout) {
+      this.startTimer(30);
     }
   }
 
