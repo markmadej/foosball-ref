@@ -19,6 +19,13 @@ export default class PossessionArrow extends React.PureComponent { // eslint-dis
     this.changePossession = this.changePossession.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log("in componentWRCP, ", nextProps);
+    this.setState({
+      teamInPossession: nextProps.teamInPossession,
+    });
+  }
+
   changePossession() {
     this.setState(previousState => {
       return {
@@ -36,7 +43,7 @@ export default class PossessionArrow extends React.PureComponent { // eslint-dis
       arrow = '\u27a1';
     }
     return (
-      <div data-test-ref="posession-arrow" style={this.props.style} onClick={() => this.changePossession()}>{arrow}</div>
+      <div data-test-ref="possession-arrow" style={this.props.style} onClick={() => this.changePossession()}>{arrow}</div>
     );
   }
 }

@@ -11,13 +11,23 @@ export default class CountdownTimerDisplayWrapper extends React.PureComponent { 
 
   constructor(props) {
     super(props);
+
     this.state = {
       running: false,
       displaySeconds: -1,
       startSeconds: -1,
     };
+
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
+
+
+  }
+
+  componentDidMount() {
+    if (this.props.startTime != null) {
+      this.startTimer(this.props.startTime);
+    }
   }
 
   startTimer(seconds) {
@@ -47,7 +57,6 @@ export default class CountdownTimerDisplayWrapper extends React.PureComponent { 
     if (timeLeft <= 0) {
       // End of timer reached!  Notify the user
       var success = window.navigator.vibrate(500);
-      console.log("vibrated? ", success);
       this.stopTimer();
 
     }
