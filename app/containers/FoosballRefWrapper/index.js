@@ -23,21 +23,21 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
       this.state = {
         teamInPossession: 1,
       };
-      this.startTimer = this.startTimer.bind(this);
-      this.flipPossession = this.flipPossession.bind(this);
+      this.startTimer = this.startTimeout.bind(this);
+      this.changePossession = this.changePossession.bind(this);
   }
 
-  flipPossession() {
+  changePossession(newTeam) {
     this.setState(previousState => {
       return {
-        teamInPossession: previousState.teamInPossession === 1 ? 2 : 1,
+        teamInPossession: newTeam,
       }
     });
   }
 
-  startTimer(seconds) {
+  startTimeout() {
     this.setState({
-      startTime: seconds,
+      startTimeout: Date.now(),
     });
   }
 
@@ -127,25 +127,25 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
     return (
       <div style={containerStyle}>
         <div style={displayPanelStyle}>
-          <CountdownTimerDisplayWrapper startTime={timerStartSeconds}/>
+          <CountdownTimerDisplayWrapper startTimeout={this.state.startTimeout}/>
         </div>
         <div style={leftToText}>Timeouts</div>
         <div style={rightToText}>Timeouts</div>
         <div style={leftTOButton}>
-          <Counter maxCount={2}  clickHandler={()=>this.startTimer(30)}/>
+          <Counter maxCount={2} dataTestRef="left-timeout" clickHandler={()=>this.startTimeout()}/>
         </div>
         <div style={rightTOButton}>
-          <Counter maxCount={2}  clickHandler={()=>this.startTimer(30)}/>
+          <Counter maxCount={2} dataTestRef="right-timeout" clickHandler={()=>this.startTimeout()}/>
         </div>
         <div style={leftScoreText}>Score</div>
         <div style={rightScoreText}>Score</div>
         <div style={leftScoreButton}>
-          <Counter dataTestRef="left-score" maxCount={5}  clickHandler={()=>this.flipPossession()}/>
+          <Counter dataTestRef="left-score" maxCount={5}  clickHandler={()=>this.changePossession(2)}/>
         </div>
         <div style={possessionTextStyle}>Possession</div>
         <PossessionArrow style={possessionArrowStyle} teamInPossession={this.state.teamInPossession}/>
         <div style={rightScoreButton}>
-          <Counter dataTestRef="right-score" maxCount={5}  clickHandler={()=>this.flipPossession()}/>
+          <Counter dataTestRef="right-score" maxCount={5}  clickHandler={()=>this.changePossession(1)}/>
         </div>
       </div>
     );

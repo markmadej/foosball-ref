@@ -21,7 +21,6 @@ export default class CountdownTimerWrapper extends React.PureComponent { // esli
   }
 
   handleClick() {
-    console.log("in countdowntimerwrapper handleClick , props=", this.props);
     this.props.stopOtherTimers(this.props.defaultSeconds);
     this.stopTimer();
     this.setState(previousState => {
@@ -54,7 +53,6 @@ export default class CountdownTimerWrapper extends React.PureComponent { // esli
 
   stopTimer() {
     if (this.timerID && this.timerID != 0) {
-      console.log("Ending timer interval.");
       clearInterval(this.timerID);
       this.timerID = 0;
     } else {
@@ -64,7 +62,6 @@ export default class CountdownTimerWrapper extends React.PureComponent { // esli
   }
 
   render() {
-    console.log("rendering countdowntimerwrapper. ", this.state, this.props);
     return (
       <CountdownTimer timerRunning={this.state.timerRunning} defaultSeconds={this.props.defaultSeconds}
         currTimerSeconds={this.state.remainingSeconds} onClick={this.handleClick} />
