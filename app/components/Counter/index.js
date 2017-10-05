@@ -33,11 +33,14 @@ export default class Counter extends React.PureComponent { // eslint-disable-lin
         count: 0,
       });
     }
+    if (this.props.clickHandler != null) {
+      this.props.clickHandler();
+    }
   }
 
   render() {
     return (
-      <div onClick={ ()=>this.incrementCounter() }>{this.state.count}</div>
+      <div data-test-ref={this.props.dataTestRef} onClick={ ()=>this.incrementCounter() }>{this.state.count}</div>
     );
   }
 }

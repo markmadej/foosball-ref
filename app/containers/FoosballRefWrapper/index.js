@@ -18,6 +18,29 @@ import PossessionArrow from '../../components/PossessionArrow';
 
 export default class FoosballRefWrapper extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
+  constructor(props) {
+      super(props);
+      this.state = {
+        teamInPossession: 1,
+      };
+      this.startTimer = this.startTimer.bind(this);
+      this.flipPossession = this.flipPossession.bind(this);
+  }
+
+  flipPossession() {
+    this.setState(previousState => {
+      return {
+        teamInPossession: previousState.teamInPossession === 1 ? 2 : 1,
+      }
+    });
+  }
+
+  startTimer(seconds) {
+    this.setState({
+      startTime: seconds,
+    });
+  }
+
   render() {
     const containerStyle = {
       display: 'grid',
@@ -93,33 +116,38 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
       gridColumn: '2 / 4',
       gridRow: '6 / 7',
       textAlign: 'center',
-      fontSize: '2em',  
+      fontSize: '2em',
+    }
+
+    var timerStartSeconds = null;
+    if (this.state.startTime != null) {
+      timerStartSeconds = this.state.startTime;
     }
 
     return (
-  <div style={containerStyle}>
-    <div style={displayPanelStyle}>
-      <CountdownTimerDisplayWrapper />
-    </div>
-    <div style={leftToText}>Timeouts</div>
-    <div style={rightToText}>Timeouts</div>
-    <div style={leftTOButton}>
-      <Counter maxCount={2} />
-    </div>
-    <div style={rightTOButton}>
-      <Counter maxCount={2} />
-    </div>
-    <div style={leftScoreText}>Score</div>
-    <div style={rightScoreText}>Score</div>
-    <div style={leftScoreButton}>
-      <Counter maxCount={5} />
-    </div>
-    <div style={possessionTextStyle}>Possession</div>
-    <PossessionArrow style={possessionArrowStyle} teamInPossession={1}/>
-    <div style={rightScoreButton}>
-      <Counter maxCount={5} />
-    </div>
-  </div>
+      <div style={containerStyle}>
+        <div style={displayPanelStyle}>
+          <CountdownTimerDisplayWrapper startTime={timerStartSeconds}/>
+        </div>
+        <div style={leftToText}>Timeouts</div>
+        <div style={rightToText}>Timeouts</div>
+        <div style={leftTOButton}>
+          <Counter maxCount={2}  clickHandler={()=>this.startTimer(30)}/>
+        </div>
+        <div style={rightTOButton}>
+          <Counter maxCount={2}  clickHandler={()=>this.startTimer(30)}/>
+        </div>
+        <div style={leftScoreText}>Score</div>
+        <div style={rightScoreText}>Score</div>
+        <div style={leftScoreButton}>
+          <Counter dataTestRef="left-score" maxCount={5}  clickHandler={()=>this.flipPossession()}/>
+        </div>
+        <div style={possessionTextStyle}>Possession</div>
+        <PossessionArrow style={possessionArrowStyle} teamInPossession={this.state.teamInPossession}/>
+        <div style={rightScoreButton}>
+          <Counter dataTestRef="right-score" maxCount={5}  clickHandler={()=>this.flipPossession()}/>
+        </div>
+      </div>
     );
   }
 }
