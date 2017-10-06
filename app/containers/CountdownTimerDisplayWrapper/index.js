@@ -25,8 +25,27 @@ export default class CountdownTimerDisplayWrapper extends React.PureComponent { 
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.startTimeout != null && nextProps.startTimeout != this.props.startTimeout) {
+    if (nextProps.startTimerAfterScore == null &&
+        nextProps.startTimeout != null &&
+        nextProps.startTimeout != this.props.startTimeout){
+        //Timeout timer has started, score timer has not, so set the timeout timer.
       this.startTimer(30);
+      return;
+    }
+
+    if (nextProps.startTimeout == null &&
+        nextProps.startTimerAfterScore != null &&
+        nextProps.startTimerAfterScore != this.props.startTimerAfterScore) {
+        //Score timer has started, timeout timer has not, so set the score timer.
+      this.startTimer(5);
+      return;
+    }
+
+    // Both are set - use the most recent one.
+    if (nextProps.startTimeout > nextProps.startTimerAfterScore) {
+      this.startTimer(30);
+    } else {
+      this.startTimer(5);
     }
   }
 
