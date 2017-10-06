@@ -29,4 +29,24 @@ describe('<FoosballRefWrapper />', () => {
     expect(timerText).toBe('30.0');
   });
 
+  it('should set a 5 second timer after a point is scored (left score)', () => {
+    const renderedComponent = mount(
+      <FoosballRefWrapper />
+    );
+
+    renderedComponent.find("[data-test-ref='left-score']").simulate('click');
+    var timerText = renderedComponent.find("[data-test-ref='countdown-display']").text();
+    expect(timerText).toBe('5.0');
+  });
+
+  it('should set a 5 second timer after a point is scored (right score)', () => {
+    const renderedComponent = mount(
+      <FoosballRefWrapper />
+    );
+
+    renderedComponent.find("[data-test-ref='right-score']").simulate('click');
+    var timerText = renderedComponent.find("[data-test-ref='countdown-display']").text();
+    expect(timerText).toBe('5.0');
+  });
+
 });

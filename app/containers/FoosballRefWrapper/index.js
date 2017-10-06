@@ -24,13 +24,14 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
         teamInPossession: 1,
       };
       this.startTimer = this.startTimeout.bind(this);
-      this.changePossession = this.changePossession.bind(this);
+      this.changePossessionAfterScore = this.changePossessionAfterScore.bind(this);
   }
 
-  changePossession(newTeam) {
+  changePossessionAfterScore(newTeam) {
     this.setState(previousState => {
       return {
         teamInPossession: newTeam,
+        startTimerAfterScore: Date.now(),
       }
     });
   }
@@ -127,7 +128,10 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
     return (
       <div style={containerStyle}>
         <div style={displayPanelStyle}>
-          <CountdownTimerDisplayWrapper startTimeout={this.state.startTimeout}/>
+          <CountdownTimerDisplayWrapper
+            startTimerAfterScore={this.state.startTimerAfterScore}
+            startTimeout={this.state.startTimeout}
+            />
         </div>
         <div style={leftToText}>Timeouts</div>
         <div style={rightToText}>Timeouts</div>
@@ -140,12 +144,12 @@ export default class FoosballRefWrapper extends React.PureComponent { // eslint-
         <div style={leftScoreText}>Score</div>
         <div style={rightScoreText}>Score</div>
         <div style={leftScoreButton}>
-          <Counter dataTestRef="left-score" maxCount={5}  clickHandler={()=>this.changePossession(2)}/>
+          <Counter dataTestRef="left-score" maxCount={5}  clickHandler={()=>this.changePossessionAfterScore(2)}/>
         </div>
         <div style={possessionTextStyle}>Possession</div>
         <PossessionArrow style={possessionArrowStyle} teamInPossession={this.state.teamInPossession}/>
         <div style={rightScoreButton}>
-          <Counter dataTestRef="right-score" maxCount={5}  clickHandler={()=>this.changePossession(1)}/>
+          <Counter dataTestRef="right-score" maxCount={5}  clickHandler={()=>this.changePossessionAfterScore(1)}/>
         </div>
       </div>
     );
